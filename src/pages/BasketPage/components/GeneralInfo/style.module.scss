@@ -1,0 +1,41 @@
+.generalInfo {
+    display: flex;
+    flex-direction: column;
+
+    width: 350px;
+    height: 120px;
+
+    background-color: #ffffff;
+    border-radius: 30px;
+
+    &__total {
+        display: flex;
+        justify-content: space-between;
+
+        margin: 21px 15px 15px 15px;
+
+        font-size: 15px;
+        color: black;
+    }
+
+    .generalInfo__orderBtn {
+        width: 100%;
+        padding: 22px 14px;
+
+        background-color: black;
+        border-radius: 30px;
+        border: none;
+
+        font-size: 17px;
+        color: white;
+
+        transition: 0.4s ease-out;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(92, 92, 92);
+            border-radius: 30px;
+        }
+    }
+}

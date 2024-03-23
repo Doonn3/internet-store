@@ -1,0 +1,9 @@
+.basketPage {
+    display: flex;
+    justify-content: space-between;
+
+    &__items {
+        display: grid;
+        gap: 20px;
+    }
+}
