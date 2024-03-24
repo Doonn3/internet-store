@@ -7,6 +7,7 @@ import BOROFONEBO4 from "../shared/assets/imgs/Image-3.png";
 
 export type ItemType = {
   id: number;
+  type: string;
   img: string;
   title: string;
   price: number;
@@ -17,6 +18,7 @@ export type ItemType = {
 export const headphones: ItemType[] = [
   {
     id: 0,
+    type: 'wired',
     img: AppleBYZS852I,
     title: "Apple BYZ S852I",
     price: 2927,
@@ -25,6 +27,7 @@ export const headphones: ItemType[] = [
   },
   {
     id: 1,
+    type: 'wired',
     img: AppleEarPods1,
     title: "Apple EarPods",
     price: 2327,
@@ -32,6 +35,7 @@ export const headphones: ItemType[] = [
   },
   {
     id: 2,
+    type: 'wired',
     img: AppleEarPods2,
     title: "Apple EarPods",
     price: 2327,
@@ -39,6 +43,7 @@ export const headphones: ItemType[] = [
   },
   {
     id: 3,
+    type: 'wireless',
     img: AppleAirPods3,
     title: "Apple AirPods",
     price: 9527,
@@ -46,6 +51,7 @@ export const headphones: ItemType[] = [
   },
   {
     id: 4,
+    type: 'wireless',
     img: GERLAXGH04,
     title: "GERLAX GH-04",
     price: 6527,
@@ -53,6 +59,7 @@ export const headphones: ItemType[] = [
   },
   {
     id: 5,
+    type: 'wireless',
     img: BOROFONEBO4,
     title: "BOROFONE BO4",
     price: 7527,
