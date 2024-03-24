@@ -18,38 +18,55 @@ type PropsType = {
 };
 
 export function ProductCard(props: PropsType) {
+  const renderButtonSwitchState = () => {
+    if (props.isInBasket) {
+      return (
+        <ButtonIcon
+          icon={RemoveIcon}
+          onClick={() =>
+            props.onClickRemove ? props.onClickRemove(props.id) : ""
+          }
+        />
+      );
+    }
+
+    return (
+      <ButtonText
+        text="Купить"
+        onClick={() => (props.onClickBuy ? props.onClickBuy(props.id) : "")}
+      />
+    );
+  };
+
   return (
     <div className={style.productCard}>
-      <img className={style.productCard__img} src={props.img} alt="" />
+      <img className={style.productCard__img} src={props.img} />
+
       <div className={style.productCard__info}>
-        <div className={style.tt}>
+        <div className={style.productCard__generalInfo}>
           <p>{props.title}</p>
-          <div className={style.zz}>
-            <span className={style.price}>{props.price} ₽</span>
-            {props.oldPrice ? (
-              <span className={style.oldPrice}>{props.oldPrice} ₽</span>
-            ) : (
-              ""
-            )}
-          </div>
+          <PriceBlock price={props.price} oldPrice={props.oldPrice} />
         </div>
 
         <div className={style.productCard__bootom}>
           <Rating rating={props.rate} />
 
-          {props.isInBasket ? (
-            <ButtonIcon
-              icon={RemoveIcon}
-              onClick={() => props.onClickRemove!(props.id)}
-            />
-          ) : (
-            <ButtonText
-              text="Купить"
-              onClick={() => props.onClickBuy!(props.id)}
-            />
-          )}
+          {renderButtonSwitchState()}
         </div>
       </div>
+    </div>
+  );
+}
+
+function PriceBlock({ price, oldPrice }: { price: number; oldPrice?: number }) {
+  return (
+    <div className={style.priceInfo}>
+      <span className={style.priceInfo__price}>{price} ₽</span>
+      {oldPrice ? (
+        <span className={style.priceInfo__oldPrice}>{oldPrice} ₽</span>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

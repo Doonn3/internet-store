@@ -1,4 +1,8 @@
 .productCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     max-width: 350px;
     max-height: 407px;
 
@@ -11,6 +15,8 @@
 
     color: black;
 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+
     &:hover {
         transform: scale(1.01);
     }
@@ -18,38 +24,44 @@
     &__info {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         width: 100%;
+        height: 100%;
     }
 
     &__bootom {
         display: flex;
         justify-content: space-between;
+        height: 40px;
     }
 
     &__img {
         width: 220px;
-        height: 237px;
+        min-height: 237px;
+        max-height: 237px;
+    }
+
+    &__generalInfo {
+        display: flex;
+        justify-content: space-between;
+
+        margin-top: 54px;
     }
 }
 
-.tt {
-    display: flex;
-    justify-content: space-between;
-
-    margin-top: 54px;
-}
-
-.zz {
+.priceInfo {
     display: flex;
     flex-direction: column;
-}
 
-.price {
-    color: #ffa542;
-}
+    &__price {
+        color: #ffa542;
+    }
 
-.oldPrice {
-    color: #ffce7f;
+    &__oldPrice {
+        color: #ffce7f;
+        text-decoration: line-through;
+        text-decoration-thickness: 3px;
+    }
 }
 
 .rating {
@@ -61,5 +73,3 @@
         color: #838383;
     }
 }
-
-
