@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Logo } from "../../shared/ui-kit/Logo";
+import { Logo } from "@/shared/ui-kit/Logo";
 
 import { BasketButton } from "./components/BasketButton";
 import { LikeButton } from "./components/LikeButton";

@@ -13,14 +13,72 @@
 .linkBlock {
     display: flex;
     flex-direction: column;
+
+    & > * {
+        font-size: 17px;
+        font-weight: 400;
+
+        text-decoration: none;
+
+        color: black;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .langBlock {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & > a {
+        font-size: 17px;
+        font-weight: 400;
+
+        text-decoration: none;
+
+        color: black;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__lang {
+        display: flex;
+        align-items: center;
+        gap: 17px;
+
+        & > * {
+            display: flex;
+            gap: 17px;
+
+            & > button {
+                background: none;
+                border: none;
+                font-size: 15px;
+                font-weight: 600;
+
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__btnActive {
+        color: #ffa542;
+    }
 }
 
 .socialBlock {
     display: flex;
-    align-items: flex-start;
+    align-self: flex-start;
+    align-items: center;
+
     gap: 18px;
+
+    & > * {
+        cursor: pointer;
+    }
 }
