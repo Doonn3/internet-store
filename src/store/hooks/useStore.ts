@@ -4,8 +4,8 @@ import { headphones } from "@/infrastructure/data";
 export function useStore() {
   const basketStore = useStoreBasket();
 
-  const getProducts = () => {
-    return headphones;
+  const getProducts = (type: 'wired' | 'wireless') => {
+    return headphones.filter((item) => item.type === type);
   };
 
   const buyProduct = (productID: number) => {
