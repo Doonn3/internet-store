@@ -1,18 +1,21 @@
-.btn {
+@use "@/shared/sass/colors" as color;
+
+.buttonText {
     padding: 5px 10px;
 
-    background-color: transparent;
+    background: none;
     border: none;
 
     font-size: 17px;
     font-weight: 600;
-    color: #000000;
 
-    transition:  0.4s ease-out;
+    color: color.$black;
 
     cursor: pointer;
 
+    transition: 0.2s ease-out;
+
     &:hover {
-        background-color: rgba(0, 0, 0, 0.24);
+        color: color.$orange;
     }
 }

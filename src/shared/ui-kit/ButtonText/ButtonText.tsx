@@ -7,7 +7,7 @@ type PropsType = {
 
 export function ButtonText(props: PropsType) {
   return (
-    <button className={style.btn} onClick={props.onClick}>
+    <button className={style.buttonText} onClick={props.onClick}>
       {props.text}
     </button>
   );

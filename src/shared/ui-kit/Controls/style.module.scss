@@ -1,0 +1,30 @@
+@use "@/shared/sass/colors" as color;
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__amount {
+        font-size: 17px;
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 30px;
+        height: 30px;
+
+        padding: 0;
+
+        background-color: color.$orange-cold;
+        border-radius: 50%;
+        border: none;
+
+        color: color.$white;
+
+        font-size: 40px;
+    }
+}

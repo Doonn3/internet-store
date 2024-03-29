@@ -7,7 +7,7 @@ type PropsType = {
 
 export function ButtonIcon(props: PropsType) {
   return (
-    <button className={style.btn} onClick={props.onClick}>
+    <button className={style.btnIcon} onClick={props.onClick}>
       <img src={props.icon} alt="Icon" />
     </button>
   );

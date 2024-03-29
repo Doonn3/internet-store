@@ -9,7 +9,7 @@ type PropsType = {
 export function IconButtonV(props: PropsType) {
   const showValue = () => {
     if (!props.value || props.value === 0) return;
-    return <span className={style.iconBtn__value}>{props.value}</span>;
+    return <span>{props.value}</span>;
   };
   return (
     <button className={style.iconBtn} onClick={props.onClick}>

@@ -1,0 +1,14 @@
+@use "@/shared/sass/colors" as color;
+
+.priceBlock {
+    display: flex;
+    flex-direction: column;
+
+    &__price {
+        color: color.$orange;
+    }
+
+    &__oldPrice {
+        color: color.$orange-cold;
+    }
+}

@@ -1,6 +1,8 @@
+@use "@/shared/sass//colors" as color;
+
 .logo {
     font-size: 25px;
-    color: black;
+    color: color.$black;
 
     text-decoration: none;
 }

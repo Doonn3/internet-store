@@ -1,0 +1,11 @@
+@use "@/shared/sass/colors" as color;
+
+.rate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > span {
+        color: color.$gray;
+    }
+}

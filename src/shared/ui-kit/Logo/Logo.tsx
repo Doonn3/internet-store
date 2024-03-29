@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import style from "./style.module.scss";
 
 export function Logo({ text }: { text: string }) {
