@@ -1,6 +1,6 @@
-import { IconButtonV } from "../../../../shared/ui-kit/IconButtonV";
+import { IconButtonV } from "@/shared/ui-kit/IconButtonV";
 
-import LikeIcon from "../../../../shared/assets/svg/Vector.svg";
+import LikeIcon from "@/shared/assets/svg/Vector.svg";
 
 type PropsType = {
   value?: number;

@@ -1,0 +1,27 @@
+@use "@/shared/sass/colors" as color;
+
+.languageSelectorContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.flexContaner {
+    display: flex;
+    align-items: center;
+}
+
+.gap20 {
+    gap: 20px;
+}
+
+.btn {
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+.btnActive {
+    color: color.$orange;
+}
