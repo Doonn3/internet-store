@@ -1,17 +1,24 @@
-import { useContext } from "react";
+import { ProductCard } from "@/components/ProductCard";
 
-import { ProductCard } from "../../shared/ui-kit/ProductCard";
-
-import { StoreContext } from "@/store/StoreContext";
+import { useStoreProvider } from "@/store";
 import { Layer } from "./components/Layer";
 
 import style from "./style.module.scss";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { useEffect } from "react";
 
 export function CatalogPage() {
-  const store = useContext(StoreContext)!.store;
+  const store = useStoreProvider().store;
+
+  useEffect(() => {
+    store.getProducts();
+    store.basketStore.getProducts();
+  });
 
   const renderProducts = () => {
-    return store.getProducts("wired").map((item, index) => {
+    const filter = store.products.filter((item) => item.type === "wired");
+    return filter.map((item, index) => {
       return (
         <ProductCard
           key={index}
@@ -30,7 +37,8 @@ export function CatalogPage() {
   };
 
   const renderProductsWireless = () => {
-    return store.getProducts("wireless").map((item, index) => {
+    const filter = store.products.filter((item) => item.type === "wireless");
+    return filter.map((item, index) => {
       return (
         <ProductCard
           key={index}
@@ -49,9 +57,13 @@ export function CatalogPage() {
   };
 
   return (
-    <section className={style.catalogPage}>
-      <Layer name="Наушники">{renderProducts()}</Layer>
-      <Layer name="Беспроводные наушники">{renderProductsWireless()}</Layer>
-    </section>
+    <>
+      <Header />
+      <section className={style.catalogPage}>
+        <Layer name="Наушники">{renderProducts()}</Layer>
+        <Layer name="Беспроводные наушники">{renderProductsWireless()}</Layer>
+      </section>
+      <Footer />
+    </>
   );
 }

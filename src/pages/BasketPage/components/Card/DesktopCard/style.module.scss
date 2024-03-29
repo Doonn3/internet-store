@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
 
-    width: 630px;
+    min-width: 630px;
     height: 220px;
 
     padding: 18px;
@@ -62,34 +62,5 @@
 
     &__price::before {
         content: "\00a0";
-    }
-}
-
-.controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    &__amount {
-        font-size: 17px;
-    }
-
-    &__btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        width: 30px;
-        height: 30px;
-
-        padding: 0;
-
-        background-color: #ffce7f;
-        border-radius: 50%;
-        border: none;
-
-        color: white;
-
-        font-size: 40px;
     }
 }

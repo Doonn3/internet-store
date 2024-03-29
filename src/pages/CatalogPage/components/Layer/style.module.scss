@@ -1,5 +1,6 @@
 .layer {
-    padding: 0 17px;
+    display: grid;
+    place-content: center;
 
     &__title {
         margin-top: 0;
@@ -13,7 +14,25 @@
 
     &__items {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 250px;
         gap: 30px;
+
+        @media (min-width: 420px) {
+            grid-template-columns: 350px;
+        }
+
+        @media (min-width: 640px) {
+            grid-template-columns: 250px 250px;
+            gap: 20px;
+        }
+
+        @media (min-width: 860px) {
+            grid-template-columns: 250px 250px 250px;
+            gap: 30px;
+        }
+
+        @media (min-width: 1280px) {
+            grid-template-columns: 350px 350px 350px;
+        }
     }
 }

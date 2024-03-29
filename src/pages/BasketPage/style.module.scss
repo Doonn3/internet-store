@@ -1,6 +1,15 @@
 .basketPage {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    
+    gap: 30px;
+
+    @media (min-width: 1280px) {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
     &__items {
         display: grid;

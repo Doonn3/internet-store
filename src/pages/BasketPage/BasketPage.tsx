@@ -1,46 +1,83 @@
-import { useContext } from "react";
-import { Card } from "./components/Card";
+import { useEffect } from "react";
+
+import { useStoreProvider } from "@/store";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+
+import { CardMobail } from "./components/Card/MobailCard";
+import { CardDesktop } from "./components/Card/DesktopCard";
 import { GeneralInfo } from "./components/GeneralInfo";
+import { Empty } from "./components/Empty";
+
+import { useDevice } from "./hooks";
 
 import style from "./style.module.scss";
 
-import { StoreContext } from "@/store/StoreContext";
-import { Empty } from "./components/Empty";
-
 export function BasketPage() {
-  const store = useContext(StoreContext)!.store.basketStore;
+  const store = useStoreProvider().store.basketStore;
+
+  const device = useDevice(680);
+
+  useEffect(() => {
+    store.getProducts();
+  }, []);
 
   const renderItems = () => {
-    const items = store.getItemsIsBasket().map((item) => {
-      return (
-        <Card
-          key={item.id}
-          img={item.img}
-          title={item.title}
-          price={item.price}
-          add={() => store.addItem(item.id)}
-          substract={() => store.substractItem(item.id)}
-          count={store.getCountItem(item.id)}
-          onRemove={() => store.deleteItem(item.id)}
-        />
-      );
-    });
+    let renderedItems: JSX.Element[] = [];
+
+    if (device.isMobile) {
+      renderedItems = store.basket.map((item) => {
+        return (
+          <CardMobail
+            key={item.id}
+            img={item.img}
+            title={item.title}
+            price={item.price}
+            count={item.count}
+            add={() => store.addItem(item.id)}
+            substract={() => store.substractItem(item.id)}
+            onRemove={() => store.deleteItem(item.id)}
+          />
+        );
+      });
+    } else {
+      renderedItems = store.basket.map((item) => {
+        return (
+          <CardDesktop
+            key={item.id}
+            img={item.img}
+            title={item.title}
+            price={item.price}
+            count={item.count}
+            add={() => store.addItem(item.id)}
+            substract={() => store.substractItem(item.id)}
+            onRemove={() => store.deleteItem(item.id)}
+          />
+        );
+      });
+    }
 
     return (
       <section className={style.basketPage}>
-        <div className={style.basketPage__items}>{items}</div>
-        <GeneralInfo totalAmount={store.getTotalPrice()} />
+        <div className={style.basketPage__items}>{renderedItems}</div>
+        <GeneralInfo totalAmount={store.totalPrice} />
       </section>
     );
   };
 
   const render = () => {
-    if (store.getAmountItems() < 1) {
+    if (store.numberGoods < 1) {
       return <Empty />;
     }
 
     return renderItems();
   };
 
-  return render();
+  return (
+    <>
+      <Header />
+      {render()}
+      <Footer />
+    </>
+  );
 }

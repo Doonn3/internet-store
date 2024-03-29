@@ -1,3 +1,5 @@
+import { Contols } from "@/shared/ui-kit/Controls/Controls";
+
 import DeleteIcon from "@/shared/assets/svg/Vector-2.svg";
 
 import style from "./style.module.scss";
@@ -39,26 +41,6 @@ export function Card(props: PropsType) {
         />
         <span className={style.endBlock__price}>{props.price} ₽</span>
       </div>
-    </div>
-  );
-}
-
-type PropsControlsType = {
-  substract: () => void;
-  value: number;
-  add: () => void;
-};
-
-function Contols(props: PropsControlsType) {
-  return (
-    <div className={style.controls}>
-      <button className={style.controls__btn} onClick={props.substract}>
-        -
-      </button>
-      <span className={style.controls__amount}>{props.value}</span>
-      <button className={style.controls__btn} onClick={props.add}>
-        +
-      </button>
     </div>
   );
 }
