@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { useStoreBasket } from "./useStoreBasket";
-import { headphones } from "@/infrastructure/data";
+import { headphones, type ItemType } from "@/infrastructure/data";
 
 export function useStore() {
   const basketStore = useStoreBasket();
 
-  const getProducts = (type: 'wired' | 'wireless') => {
-    return headphones.filter((item) => item.type === type);
+  const [products, setProducts] = useState<ItemType[]>([]);
+
+  const getProducts = () => {
+    setProducts(headphones);
   };
 
   const buyProduct = (productID: number) => {
@@ -25,6 +28,7 @@ export function useStore() {
     getProducts,
     buyProduct,
     IsInBasket,
+    products,
     basketStore,
   };
 }

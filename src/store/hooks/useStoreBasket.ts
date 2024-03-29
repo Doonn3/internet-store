@@ -7,67 +7,76 @@ import {
   type BasketItemType,
 } from "@/infrastructure/FakeApi/api.fake.basket";
 import { ItemType } from "@/infrastructure/data";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export function useStoreBasket() {
   const [basket, setBasket] = useState<BasketItemType[]>([]);
+  const [numberGoods, setNumberGoods] = useState<number>(0);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
-  const setItemToBasket = (_item: ItemType) => {
-    const item = apiSetItemToBasket(_item);
-    setBasket([...basket, item]);
-  };
+  const setItemToBasket = useCallback((_item: ItemType) => {
+    const items = apiSetItemToBasket(_item);
+    setBasket(items);
+    setNumberGoods(calcCount(items));
+    setTotalPrice(calcTotalPrice(items));
+  }, []);
 
-  const getItemsIsBasket = () => {
+  const getProducts = () => {
     const items = apiGetItemsIsBasket();
     setBasket(items);
-
-    return items;
+    if (items.length < 1) return;
+    setNumberGoods(calcCount(items));
+    setTotalPrice(calcTotalPrice(items));
   };
 
   const addItem = (id: number) => {
-    const item = apiAddItem(id);
-    if (!item) return;
-    setBasket([...basket, item]);
+    const items = apiAddItem(id);
+    if (!items) return;
+
+    setBasket(items);
+    setNumberGoods(calcCount(items));
+    setTotalPrice(calcTotalPrice(items));
   };
 
   const substractItem = (id: number) => {
-    const item = apiSubstractItem(id);
-    if (!item) return;
-    setBasket([...basket, item]);
-  };
+    const items = apiSubstractItem(id);
+    if (!items) return;
 
-  const getAmountItems = () => {
-    if (basket.length < 1) return 0;
-    return basket.map((item) => item.count).reduce((a, b) => a + b);
-  };
-
-  const getTotalPrice = () => {
-    if (basket.length < 1) return 0;
-    const prices = basket.map<number>((item) => item.price * item.count);
-    const totalPrice = prices.reduce((a, b) => a + b);
-    return totalPrice;
-  };
-
-  const getCountItem = (id: number) => {
-    const item = basket.find((item) => item.id === id);
-    if (!item) return 0;
-    return item.count;
+    setBasket(items);
+    setNumberGoods(calcCount(items));
+    setTotalPrice(calcTotalPrice(items));
   };
 
   const deleteItem = (id: number) => {
     const result = apiDeleteItemForBasketByID(id);
+
     setBasket(result);
+
+    if (result.length < 1) {
+      setNumberGoods(0);
+      setTotalPrice(0);
+    } else {
+      setNumberGoods(calcCount(result));
+      setTotalPrice(calcTotalPrice(result));
+    }
+  };
+
+  const calcCount = (items: BasketItemType[]) => {
+    return items.map((i) => i.count).reduce((a, b) => a + b);
+  };
+
+  const calcTotalPrice = (items: BasketItemType[]) => {
+    return items.map((i) => i.price * i.count).reduce((a, b) => a + b);
   };
 
   return {
-    getItemsIsBasket,
     addItem,
     substractItem,
-    getAmountItems,
-    getCountItem,
-    getTotalPrice,
     deleteItem,
     setItemToBasket,
-    basket
+    getProducts,
+    basket,
+    numberGoods,
+    totalPrice,
   };
 }

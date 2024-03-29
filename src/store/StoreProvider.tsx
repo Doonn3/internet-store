@@ -9,15 +9,15 @@ interface StoreProviderProps {
 export function StoreProvider(props: StoreProviderProps) {
   const store = useStore();
 
-  const storeMemo = useMemo(
-    () => ({
-      store,
-    }),
-    [store]
-  );
+  // const storeMemo = useMemo(
+  //   () => ({
+  //     store,
+  //   }),
+  //   [store]
+  // );
 
   return (
-    <StoreContext.Provider value={storeMemo}>
+    <StoreContext.Provider value={{ store: store }}>
       {props.children}
     </StoreContext.Provider>
   );
