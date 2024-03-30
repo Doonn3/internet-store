@@ -1,3 +1,5 @@
+import style from "./style.module.scss";
+
 export function NotFoundPage() {
-  return <p>404 Not found page</p>;
+  return <p className={style.notFountPage}>404 Not found page</p>;
 }
