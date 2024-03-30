@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from "react";
+import { ReactNode } from "react";
 import { StoreContext } from "./StoreContext";
 import { useStore } from "./hooks/useStore";
 
@@ -8,13 +8,6 @@ interface StoreProviderProps {
 
 export function StoreProvider(props: StoreProviderProps) {
   const store = useStore();
-
-  // const storeMemo = useMemo(
-  //   () => ({
-  //     store,
-  //   }),
-  //   [store]
-  // );
 
   return (
     <StoreContext.Provider value={{ store: store }}>
