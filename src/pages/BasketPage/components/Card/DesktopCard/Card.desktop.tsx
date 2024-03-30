@@ -1,5 +1,6 @@
 import { Contols } from "@/shared/ui-kit/Controls/Controls";
 
+import { ButtonIcon } from "@/shared/ui-kit/ButtonIcon";
 import DeleteIcon from "@/shared/assets/svg/Vector-2.svg";
 
 import style from "./style.module.scss";
@@ -33,12 +34,7 @@ export function Card(props: PropsType) {
       </div>
 
       <div className={style.endBlock}>
-        <img
-          onClick={props.onRemove}
-          className={style.endBlock__icon}
-          src={DeleteIcon}
-          alt="Delete Icon"
-        />
+        <ButtonIcon icon={DeleteIcon} onClick={props.onRemove} />
         <span className={style.endBlock__price}>{props.price} ₽</span>
       </div>
     </div>

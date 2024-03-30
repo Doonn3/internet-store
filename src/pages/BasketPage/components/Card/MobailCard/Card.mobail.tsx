@@ -21,7 +21,7 @@ export function Card(props: PropsType) {
     <div className={style.card}>
       <div className={style.top}>
         <p className={style.card__title}>{props.title}</p>
-        <ButtonIcon icon={DeleteIcon} />
+        <ButtonIcon icon={DeleteIcon} onClick={props.onRemove} />
       </div>
 
       <div className={style.center}>
